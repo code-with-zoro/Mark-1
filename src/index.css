@@ -1,6 +1,21 @@
-@import "tailwindcss";
-@theme {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Global Styles === */
+:root {
   --font-display: "Satoshi", sans-serif;
-  --color-primary: #1d4ed8; /* Example primary color */
-  --color-secondary: #fbbf24; /* Example secondary color */
+  --color-primary: #1d4ed8; /* Primary brand color */
+  --color-secondary: #fbbf24; /* Secondary brand color */
+  --color-text: #1f2937; /* Dark gray for readability */
+  --color-bg: #f9fafb; /* Light background */
+  --border-radius: 8px;
+  --shadow-md: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Apply global styles */
+body {
+  font-family: var(--font-display);
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
