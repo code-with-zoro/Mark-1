@@ -1,6 +1,7 @@
 // src/components/Onboarding.jsx
 import React, { useState, useContext } from 'react';
-import { UserContext } from '../context/UserContext'; // Adjust the import path if necessary
+import { UserContext } from "../context/UserContext";  // ✅ Correct path
+ // Adjust the import path if necessary
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 
 const Onboarding = () => {
