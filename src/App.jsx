@@ -1,23 +1,28 @@
-// src/App.jsx
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Onboarding from './components/Onboarding';
-import Profile from './components/Profile';
-import Feed from './components/Feed';
-import Messaging from './components/Messaging';
+import { UserProvider } from './context/UserContext'; // ✅ Import User Context
+
+const Onboarding = lazy(() => import('./components/Onboarding'));
+const Profile = lazy(() => import('./components/Profile'));
+const Feed = lazy(() => import('./components/Feed'));
+const Messaging = lazy(() => import('./components/Messaging'));
 
 const App = () => {
   return (
-    <Router>
-      <div className="container mx-auto p-4">
-        <Routes>
-          <Route path="/" element={<Onboarding />} />
-          <Route path="/profile" element={<Profile user={{ name: "John Doe", domain: "CSE" }} />} />
-          <Route path="/feed" element={<Feed posts={[{ title: "Hello World", content: "This is my first post!" }]} />} />
-          <Route path="/messages" element={<Messaging />} />
-        </Routes>
-      </div>
-    </Router>
+    <UserProvider> {/* ✅ Wrap the whole app inside UserProvider */}
+      <Router>
+        <div className="container mx-auto p-4">
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route path="/" element={<Onboarding />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/feed" element={<Feed />} />
+              <Route path="/messages" element={<Messaging />} />
+            </Routes>
+          </Suspense>
+        </div>
+      </Router>
+    </UserProvider>
   );
 };
 

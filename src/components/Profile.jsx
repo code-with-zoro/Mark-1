@@ -1,11 +1,13 @@
-// src/components/Profile.jsx
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 
-const Profile = ({ user }) => {
+const Profile = () => {
+  const { user } = useContext(UserContext); // ✅ Fetch user from context
+
   return (
-    <div className="bg-white p-6 rounded shadow-md">
-      <h2 className="text-xl font-bold">{user.name}</h2>
-      <p className="text-gray-600">{user.domain}</p>
+    <div className="bg-white p-6 rounded shadow-md text-center">
+      <h2 className="text-xl font-bold">{user?.name || "Guest"}</h2>
+      <p className="text-gray-600">{user?.domain || "No domain selected"}</p>
     </div>
   );
 };
