@@ -2,14 +2,14 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { UserProvider, useUser } from './context/UserContext';
 import Navbar from './components/Navbar';
-import Home from './components/Home';
-import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
+import Home from './pages/Home';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 import PostCard from './components/PostCard';
 
 // Lazy-loaded components
 const Onboarding = lazy(() => import('./components/Onboarding'));
-const Profile = lazy(() => import('./components/Profile'));
+const Profile = lazy(() => import('./pages/Profile'));
 const Feed = lazy(() => import('./components/Feed'));
 const Messaging = lazy(() => import('./components/Messaging'));
 
