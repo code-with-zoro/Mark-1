@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useUser } from '../context/UserContext';
-import PostCard from './components/PostCard';
+import PostCard from './PostCard';
 
 // Mock post generator
 const generateMockPosts = (count, userDomain) => {
@@ -108,12 +108,13 @@ const Feed = () => {
       <div className="space-y-6">
         {filteredPosts.length > 0 ? (
           filteredPosts.map(post => (
-            <PostCard
-              key={post.id}
-              post={post}
-              onLike={() => handleLike(post.id)}
-              currentUser={user}
-            />
+            <PostCard 
+            key={post.id}
+            post={post}
+            currentUser={user}
+            onLike={(postId) => handleLike(postId)}
+            onComment={(postId) => setActivePost(postId)}
+          />
           ))
         ) : (
           <div className="text-center py-10 text-gray-500">
