@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useUser } from '../context/UserContext';
-import PostCard from './PostCard';
+import PostCard from '../components/PostCard';
 
 // Mock post generator
 const generateMockPosts = (count, userDomain) => {
